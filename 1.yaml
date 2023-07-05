@@ -89,23 +89,6 @@ spec:
 apiVersion: influxdata.com/v2alpha1
 kind: Variable
 metadata:
-    name: bucket
-spec:
-    name: bucket
-    associations:
-      - kind: Label
-        name: linux-system-template
-    language: flux
-    query: |-
-        buckets()
-          |> filter(fn: (r) => r.name !~ /^_/)
-          |> rename(columns: {name: "_value"})
-          |> keep(columns: ["_value"])
-    type: query
----
-apiVersion: influxdata.com/v2alpha1
-kind: Variable
-metadata:
     name: linux-host
 spec:
     name: linux_host
